@@ -1,0 +1,74 @@
+\documentclass[spanish, twocolumn]{report}
+
+\makeatletter 
+\def\input@path{{../../}} 
+\makeatother
+\input{e3_tp2_preamble.tex}
+
+\begin{document}
+
+\input{e3_tp2_caratula.tex}
+\tableofcontents
+\newpage
+
+
+
+\newgeometry{left =1.5cm, right=1.5cm, top=1.5cm, bottom=2cm}	%texto ocupa mas ancho de pagina
+%esto no esta en el preambulo para que la caratula tenga margenes distintos
+
+
+%hago backup del comando \input actual, y lo cambio para que cambie el path de buqueda de nuevos archivos
+%esto va a afectar a los includes de este archivo y a los del archivo del subfile, pero solo cuando compilo desde aca. Si compilo desde el subfile este cambio no sucede entonces sigue andando.
+
+\subfile{e3_tp2_intro.tex}
+
+\clearpage
+
+\let\oldinput=\input 	
+\def\input#1{\oldinput{Ej1/Informe/#1}}	
+%agrego el archivo y despues restauro al comando original
+\subfile{e3_tp2_ej1.tex}
+\let\input=\oldinput
+
+\let\oldinput=\input 	
+\def\input#1{\oldinput{Ej2/Informe/#1}}	
+\subfile{e3_tp2_ej2.tex}
+\let\input=\oldinput
+
+\let\oldinput=\input 	
+\def\input#1{\oldinput{Ej3/Informe/#1}}	
+\subfile{e3_tp2_ej3.tex}
+\let\input=\oldinput
+
+\let\oldinput=\input 	
+\def\input#1{\oldinput{Ej4/Informe/#1}}	
+\subfile{e3_tp2_ej4.tex}
+\let\input=\oldinput
+
+\let\oldinput=\input 	
+\def\input#1{\oldinput{Ej5/Informe/#1}}	
+\subfile{e3_tp2_ej5.tex}
+\let\input=\oldinput
+
+
+\let\oldinput=\input 	
+\def\input#1{\oldinput{Ej6/Informe/#1}}	
+\subfile{e3_tp2_ej6.tex}
+\let\input=\oldinput
+
+
+\let\oldinput=\input 	
+\def\input#1{\oldinput{Ej7/Informe/#1}}	
+\subfile{e3_tp2_ej7.tex}
+\let\input=\oldinput
+
+
+
+\let\oldinput=\input 	
+\def\input#1{\oldinput{Ej8/Informe/#1}}	
+\subfile{e3_tp2_ej8.tex}
+\let\input=\oldinput
+
+
+\subfile{e3_tp2_anexo.tex}
+\end{document}

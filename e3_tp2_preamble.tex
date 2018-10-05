@@ -1,4 +1,3 @@
-
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{float}
@@ -25,7 +24,7 @@
 \usepackage{mathtools}
 \usepackage{placeins}
 \setlength{\columnsep}{0.6cm}
-\usepackage{geometry}	%texto ocupa mas ancho de pagina
+\usepackage[left =1.5cm, right=1.5cm, top=1.5cm, bottom=2cm]{geometry}	%texto ocupa mas ancho de pagina
 \usepackage{xcolor}						%se usa en \code
 \usepackage[american]{circuitikz}		%dibujar esquematicos y diagramas
 \usepackage[parfill]{parskip}			%pone espacio entre parrafos
@@ -37,6 +36,11 @@
 \usepackage{pdfpages}
 \usepackage{csvsimple}
 \usepackage{adjustbox}
+\usepackage{slashbox}
+\usepackage{units}
+\usepackage{listings}
+\usepackage{stfloats}
+\usepackage{longtable}
 
 \setlength{\marginparwidth}{2cm}		%dar lugar a las todo notes en modo twocolumn
 
@@ -67,22 +71,6 @@
 \usepackage{subcaption}
 
 
-
-\def\@makechapterhead#1{%
-  \vspace*{50\p@}% <----------------- Space from top of page to Chapter #
-  {\parindent \z@ \raggedright \normalfont
-    \ifnum \c@secnumdepth >\m@ne
-        \huge\bfseries \@chapapp\space \thechapter% <-- Chapter #
-        \par\nobreak
-        \vskip 20\p@% <-------------- Space between Chapter # and title
-    \fi
-    \interlinepenalty\@M
-    \Huge \bfseries #1\par\nobreak% <------------------ Chapter title
-    \vskip 10\p@% <------------------ Space between chapter title and first paragraph
-  }}
-
-
-
 % separacion correcta de palabras en silabas
 \hyphenation{o-pe-ra-cio-nal}
 \hyphenation{o-pe-ra-cio-na-les}
@@ -90,6 +78,49 @@
 \hyphenation{e-mu-lan-do}
 \hyphenation{co-rrien-te}
 \hyphenation{ob-te-ner}
+\hyphenation{ob-te-ne-mos}
+\hyphenation{ha-llar-se}
+\hyphenation{ca-pa-ci-tor}
+\hyphenation{trans-fe-ren-cia}
+\hyphenation{ma-ne-ra}
+\hyphenation{di-se-ño}
+\hyphenation{re-so-nan-cia}
+\hyphenation{mo-de-lar-se}
+\hyphenation{a-pro-xi-ma-da-men-te}
+\hyphenation{pseu-do-pe-rí-o-do}
+\hyphenation{res-pues-ta}
+\hyphenation{li-neal}
+\hyphenation{sa-tu-ra-ción}
+\hyphenation{e-le-va-da}
+\hyphenation{si-guien-te}
+\hyphenation{cons-tan-te}
+\hyphenation{es-pe-ra-do}
+\hyphenation{dis-po-si-ti-vo}
+\hyphenation{ins-tan-cia}
+\hyphenation{si-mu-la-cio-nes}
+\hyphenation{pro-ce-dien-do}
+\hyphenation{to-le-ran-cias}
+\hyphenation{co-rrien-tes}
+\hyphenation{va-lo-res}
+\hyphenation{pu-die-se}
+\hyphenation{des-co-no-cie-sen}
+\hyphenation{des-pués}
+\hyphenation{ins-tru-men-tal}
+\hyphenation{ma-yo-res}
+\hyphenation{pa-ra-le-lo}
+\hyphenation{pro-ble-ma}
+\hyphenation{con-ti-nua-ción}
+\hyphenation{coin-ci-de}
+\hyphenation{ca-li-dad}
+\hyphenation{sa-li-das}
+\hyphenation{des-crip-to}
+\hyphenation{má-xi-ma}
+\hyphenation{a-te-nua-ción}
+\hyphenation{e-ner-gí-a}
+\hyphenation{si-mu-la-do}
+\hyphenation{co-mer-cia-les}
+\hyphenation{lo-ga-rít-mi-ca}
+
 
 
 %cambia las palabras que estan en ingles a castellano
@@ -97,5 +128,8 @@
 \AtBeginDocument{\renewcommand\figurename{Figura}}
 \AtBeginDocument{\renewcommand\tablename{Tabla}}
 \AtBeginDocument{\renewcommand\chaptername{Ejercicio}}
+
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
 
 \makeatletter

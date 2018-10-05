@@ -1,0 +1,9 @@
+cmos cuando no levanta ruido de la linea sale 0 (-5.6mV a -5mV) (turbio)
+
+ttl sale 1 (4.42V-4.45V). no se pudo levantar ruido
+
+ambas, input flotante: sale 1 (5.01V-5.02V). idem input alto
+input 0: sale 0 (-7mV a -3mV)
+
+cmos detecta 1 a partir de  2.2V tanto bajando como subiendo
+ttl en 1.3V

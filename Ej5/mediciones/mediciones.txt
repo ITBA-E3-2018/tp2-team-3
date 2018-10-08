@@ -1,4 +1,4 @@
-cmos cuando no levanta ruido de la linea sale 0 (-5.6mV a -5mV) (turbio)
+cmos cuando no levanta ruido de la linea sale a veces 1 (4.7V a 4.8V), a veces 0 (-5.6mV a -5mV), a veces cuadrada de 50Hz
 
 ttl sale 1 (4.42V-4.45V). no se pudo levantar ruido
 

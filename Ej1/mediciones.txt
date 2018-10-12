@@ -1,0 +1,59 @@
+RTL sin carga
+salida de 0 a 1:
+	propagation delay	3.656us
+	transition time 	.56us
+salida de 1 a 0:
+	propagation delay	52ns
+	transition time		80ns
+
+salida de 1 a 0 con entrada .49V
+salida de 0 a 1 con entrada .775V
+
+low level out	4.925V
+high level out	.01V
+
+
+RTL con carga -> MAS RUIDO
+
+propagation time low to high: 3.54us
+transition time low to high: 3.14us
+propagation time high to low: 68ns
+transition time high to low: 200ns 
+
+transicion de bajo a alto en .77V
+		alto a bajo en .57V
+
+low level out .04V 
+high level out 4.9V
+
+max dV/dt = 50.6MV/s
+
+
+TTL sin carga
+salida de 0 a 1
+	propagation time	.66us
+	transition time		.205us
+	input voltage		menor a 0.66V
+salida de 1 a 0
+	propagation time 	678ns
+	transition time		200ns
+	input votage		mayor a .525V
+low level output  0V
+high level output 4.91V
+
+
+
+TTL con carga
+salida de 1 a 0
+	propagation time	6ns
+	transition time		13ns
+	input voltage		mayor a .525V
+salida de 0 a 1
+	propagation time	.715us
+	transition time		3.21us
+	input voltage		menor a .625V
+low level output	-.025V
+high level output	4.9V
+
+
+maxima dVc/dt = 15.94MV/s

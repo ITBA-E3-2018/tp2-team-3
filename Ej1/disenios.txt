@@ -1,1 +1,8 @@
 http://www.play-hookey.com/digital_experiments/ttl/ttl_inverter.html
+http://www.play-hookey.com/digital_experiments/rtl/rtl_inverter.html
+
+rtl1 = 15k
+rtl2 = 1k
+
+rttl1 = 4k7
+rttl2 = 1k

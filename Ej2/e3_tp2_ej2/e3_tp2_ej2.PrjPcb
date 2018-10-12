@@ -38,7 +38,7 @@ PrefsVaultGUID=
 PrefsRevisionGUID=
 
 [Document1]
-DocumentPath=e3_tp2_ej4.SchDoc
+DocumentPath=e3_tp2_ej2.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -52,10 +52,10 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=PISQYMKX
+DocumentUniqueId=POMBTHTP
 
 [Document2]
-DocumentPath=..\..\..\..\..\..\..\..\Public\Documents\Altium\AD17\Library\TI Logic Gate 1.IntLib
+DocumentPath=..\..\..\..\..\..\..\..\Public\Documents\Altium\AD17\Library\ON Semiconductor\ON Semi Logic Gate.IntLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -89,7 +89,7 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document4]
-DocumentPath=..\..\..\..\..\..\..\..\Public\Documents\Altium\AD17\Library\TI Logic Gate 2.IntLib
+DocumentPath=e3_tp2_ej2.PcbDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -103,10 +103,10 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=BYFSWCQJ
 
 [Document5]
-DocumentPath=..\..\..\..\..\..\..\..\Public\Documents\Altium\AD17\Library\ON Semiconductor\ON Semi Logic Gate.IntLib
+DocumentPath=..\..\..\..\..\..\..\..\Public\Documents\Altium\AD17\Library\Libreria Altium\Libreria Altium\Texas Instruments\TI Logic Gate 1.IntLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -123,7 +123,7 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document6]
-DocumentPath=e3_tp2_ej4.PcbDoc
+DocumentPath=..\..\..\..\..\..\..\..\Public\Documents\Altium\AD17\Library\Libreria Altium\Libreria Altium\Texas Instruments\TI Logic Gate 2.IntLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -137,10 +137,10 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=TRCBVOVP
+DocumentUniqueId=
 
 [GeneratedDocument1]
-DocumentPath=Project Outputs for e3_tp2_ej4_altium\Board Information - e3_tp2_ej4.html
+DocumentPath=Project Outputs for e3_tp2_ej2\Board Information - e3_tp2_ej2.html
 DItemRevisionGUID=
 
 [Configuration1]
@@ -285,7 +285,7 @@ OutputName1=Composite Drawing
 OutputDocumentPath1=
 OutputVariantName1=
 OutputDefault1=0
-PageOptions1=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=2|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=1|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=600|MediaType=1|DitherType=10|PrintScaleMode=0|PaperKind=A4|PaperIndex=9
+PageOptions1=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=2|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=1|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=0|PaperKind=A4|PaperIndex=9
 Configuration1_Name1=OutputConfigurationParameter1
 Configuration1_Item1=DesignatorDisplayMode=Physical|PrintArea=DesignExtent|PrintAreaLowerLeftCornerX=0|PrintAreaLowerLeftCornerY=0|PrintAreaUpperRightCornerX=0|PrintAreaUpperRightCornerY=0|Record=PcbPrintView
 Configuration1_Name2=OutputConfigurationParameter2

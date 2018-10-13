@@ -1,0 +1,34 @@
+entrada en hc, salida en ls:
+	salida de 1 a 0: se caga de 2.334V a 2.469V
+	salida de 0 a 1: se caga de 2.375V a 2.250V
+	saltito a los negativos en la transicion: -220mV
+	salida low 	156mV	
+	salida high	3.9V 
+
+
+entrada en hc, salida en hct:
+	no se caga! transicion re piola
+	transicion en 2.4V (simetrico)
+	salida low 	31mV	
+	salida high	4.969V
+
+
+entrada en ls, salida en hct:
+	no se caga
+	transiciones en 1V
+	saltito a los negativos en la transicion: -220mV
+	salida low 	63mV	
+	salida high	4.938V  
+
+
+entrada en ls, salida en hc:
+	no se caga, transiciones en 1V
+	salida low 	31mV	
+	salida high	4.938V
+
+ 
+entrada en hct, salida en ls:
+	no se caga, transiciones en 1.1V
+	salida low 	156mV	
+	salida high	3.969V
+

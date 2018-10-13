@@ -3,6 +3,41 @@
 \documentclass[../../e3_tp2_main.tex]{subfiles}
 
 \begin{document}
-\chapter{Ejercicio 2}
+\chapter{}
+
+Cuando se utilizan compuertas l\'ogicas provenientes de distintas familias, es importante tener en cuenta si son compatibles entre ellas. En esta secci\'on, estudiaremos c\'omo interact\'uan compuertas \textit{nor} HC (CMOS), HCT (CMOS compatible con TTL) y LS (TTL). \par
+
+Cargando cada compuerta con cada una de las otras dos sucesivamente (con la otra entrada conectada a \textit{ground}, de forma tal que la salida fuese la entrada negada), se realizaron DC sweeps con tensiones de 0V a 5V (puesto que esta fue la tensi\'on que se utiliz\'o como $V_{CC}$) para observar qu\'e problem\'aticas pod\'ian presentarse. Todas las combinaciones funcionaban de acuerdo a lo esperado para compuertas nor, salvo cuando se carg\'o la compuerta HC con la LS.\par
+
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw
+		(0,0) node[nor port] (and){}
+		(2,-0.27) node[nor port] (or){}		
+		
+		(and.in 1) -| (-1.5,.27) node[ocirc, label=left:$V_{IN}$]{}
+		(and.in 2) -| (-2,-0.27) node[ground]{}
+		
+		(and.out) to [short, -*] (or.in 1)
+		(or.in 2) -| (0.2,-0.54) node[ground]{}
+		(or.out) -| (2.5,-0.27) node[ocirc, label=right:$V_{OUT}$]{}			
+	;\end{circuitikz}
+	\caption{Conexi\'on entre las compuertas}
+\end{figure}
+En este caso, se observ\'o un valor inesperado de -0.22V en la salida cuando:
+
+\begin{itemize}
+	\item \textit{low to high}: la tensi\'on de entrada se encontraba entre 2.33V y 2.47V
+	\item \textit{high to low}: la tensi\'on de entrada se encontraba entre 2.25V y 2.38V
+\end{itemize}
+
+Este es el rango de tensiones donde, de acuerdo al fabricante \footnote{Informaci\'on obtenida de la \href{https://assets.nexperia.com/documents/data-sheet/74HC_HCT02.pdf}{\underline{hoja de datos}} (consultado: 12/10/18).} se encuentra el low level input voltage, y donde la salida cambiaba de estado cuando la carga de la HC era la HCT (2.4V). Esto sugerir\'ia que al hacer interactuar una compuerta CMOS con una TTL sin una interfaz adecuada, pueden obtenerse a la salida tensiones que no reflejan adecuadamente el circuito l\'ogico que se supone que se est\'a representando.\par
+
+Efectivamente, esta es una de las aplicaciones de la familia de compuertas HCT \footnote{De acuerdo a la nota de aplicaci\'on de \textit{Fairchild Semiconductors}: \href{https://www.fairchildsemi.com/application-notes/AN/AN-368.pdf}{\underline{\textit{An Introduction to TTL Compatible CMOS Logic}}} (consultado: 13/10/18).}. Si bien seg\'un la nota consultada, suele haber problemas al cargar una compuerta TTL con una CMOS y no tanto al rev\'es (al contrario de lo que se obtuvo, si bien el glitch hallado se presentaba en un rango de tensiones acotado), se reconocen las incompatibilidades entre ambas tecnolog\'ias.\par
+
+En particular, se pueden suscitar inconvenientes debido a que la tensi\'on de salida \textit{high} de las compuertas TTL y la de entrada \textit{high} de las CMOS se superponen en un intervalo, pero no en la totalidad de los valores posibles. Por ejemplo, para $V_{CC}=4.5\mathrm{V}$, para el integrado 74LS02 el fabricante no garantiza que la tensi\'on de salida alta de las compuertas sea superior a 2.5V, si bien t\'ipicamente es de 3.5V\footnote{Seg\'un la \href{http://www.learn-c.com/74ls02.pdf}{\underline{hoja de datos}} proporcionada (consultado: 12/10/18).}. En cuanto a la HC, las tensiones de entrada necesarias para salida alta se encuentran entre 2.4V y 3.15V. Por lo tanto, existe un rango de valores en que no se cumple que el primer par\'ametro sea mayor que el segundo.\par
+
+En conclusi\'on, si bien en este caso la tensi\'on de entrada necesaria para obtener una salida alta en HC era de 2.4V con $V_{CC}=5\mathrm{V}$, con lo cual la salida alta de la compuerta LS, medida en $3.9\mathrm{V}$, pod\'ia inducir a su vez un cambio en la salida de la HC (en este caso, puesto que las compuertas eran de tipo \textit{nor}, de 1 a 0). Sin embargo, s\'olo porque en este caso no se present\'o este problema no implica que sea una buena pr\'actica realizar conexiones de este tipo. De hecho, se registr\'o otro tipo de problema que no se observ\'o para la \textit{gate} HCT. Por lo tanto, de suscitarse la necesidad de hacer interactuar una compuerta CMOS con una TTL, se debe recordar que hay compuertas CMOS especialmente dise\~nadas para ser compatibles con las tensiones de salida m\'as bajas de las TTL.
 
 \end{document}

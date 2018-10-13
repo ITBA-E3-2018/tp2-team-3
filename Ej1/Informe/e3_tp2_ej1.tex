@@ -3,9 +3,81 @@
 \documentclass[../../e3_tp2_main.tex]{subfiles}
 
 \begin{document}
-\chapter{Ejercicio 1}
+\chapter{}
 
-ahre
+En esta secci\'on se implementaron compuertas \textit{not} a partir de transistores BJT (de sus siglas en ingl\'es, \textit{bipolar junction transistor}). Particularmente, se decidi\'o utilizar BJTs de tipo NPN, formando circuitos de dos familias distintas:
 
+\begin{itemize}
+	\item RTL (\textit{resistor-transistor logic}): utiliza resistencias en la malla de entrada y transistores como \textit{switch}.
+	\item TTL (\textit{transistor-transistor logic}): utiliza transistores tanto para el \textit{switching} como para la amplificaci\'on.
+\end{itemize}
+
+De estas definiciones surge que en TTL se requiere mayor cantidad de transistores por compuerta, pero se disipar\'a menos potencia en resistencias pues las corrientes ser\'an menores. Para comparar otros factores de su funcionamiento, se armaron los siguientes circuitos:
+
+\begin{figure}[H]
+	\centering
+		\begin{circuitikz}
+	 	\draw 
+ 			(3.5,1) node[npn] (npn) {}
+		 	(npn.B) to [R, l_=15K$\Omega$, -o] (0.5,1) node[left]{$V_{IN}$}	
+ 			(npn.E) to [short] (3.5,-0.5) node[ground]{}
+ 		 	(npn.C) to [R, l_=1K$\Omega$, -o] (3.5,3.5) node[above]{+5V}
+ 		 	(3.5,1.5) to [short, *-o] (4,1.5) node[right]{$V_{OUT}$} 	
+ 		;\end{circuitikz}
+	\caption{Compuerta \textit{not} RTL}
+	\label{fig:1-rtl}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+		\begin{circuitikz}
+	 	\draw 
+ 			(3.5,1) node[npn] (npn) {}
+ 			(npn.E) to [short] (3.5,-0.5) node[ground]{}
+ 		 	(npn.C) to [R, l_=1K$\Omega$, -o] (3.5,3.5) node[above]{+5V}
+ 		 	(3.5,1.5) to [short, *-o] (4,1.5) node[right]{$V_{OUT}$} 	
+ 		 	
+			(1.5,1) node[npn, rotate=-90] (npn2){} 	
+			(npn2.C) to [short] (npn.B)
+			(npn2.E) to [short, -o] (0.5,1) node[left]{$V_{IN}$}
+			(npn2.B) to [R, l_=4.7K$\Omega$, -o] (1.5, 3.5) node[above]{+5V}	 	
+ 		 	
+ 		;\end{circuitikz}
+	\caption{Compuerta \textit{not} TTL}
+	\label{fig:1-ttl}
+\end{figure}
+
+
+Se utilizaron transistores BC547 y resistencias de metal-film, y los circuitos se armaron en una \textit{printed circuit board}. \par
+
+\section{An\'alisis de resultados}
+
+Las mediciones se realizaron el circuito con ondas cuadradas de 5V de amplitud\todo{modelo del generador}, con el nivel bajo en 0V. Las tensiones necesarias para calcular el margen de ruido se midieron utilizando el modo XY del osciloscopio\todo{modelo del osciloscopio}, mientras que para los tiempos el modo \textit{single}. Todas las mediciones se realizaron en dos condiciones para cada compuerta: en vac\'io, y con un capacitor de 1nF como carga. Al cargar la compuerta, se pudo hacer adem\'as una medici\'on adicional: la corriente de salida m\'axima, que por ser la carga puramente capacitiva, se calcul\'o como $i_c = C \cdot \frac{dV_C}{dt}$, obteniendo esta derivada a trav\'es de las funciones matem\'aticas del osciloscopio. \par
+
+Los resultados de las mediciones se encuentran en la tabla \ref{table:1-mediciones}.\par
+
+\todo[inline]{analisis}
+
+
+\begin{table*}[t]
+	\begin{tabular}{|c|c|c|c|c|}
+	\hline
+                                  				& RTL en vac\'io	& RTL con $C_L=1nF$ & TTL en vac\'io & TTL con $C_L=1nF$ \\ \hline \hline
+	HLIV (V)                          			&                      &                   &                               &                   \\ \hline
+	LLIV (V)                          			&                      &                   &                               &                   \\ \hline
+	HLOV (V)                          			&                      &                   &                               &                   \\ \hline
+	LLOV (V)                          			&                      &                   &                               &                   \\ \hline
+	Noise margin                      		&                      &                   &                               &                   \\ \hline
+	Propagation delay (H-L) ($\mu s$)	& 0.05               & 0.07              & 0.07                          & 0.01              \\ \hline
+	Propagation delay (L-H) ($\mu s$) 	& 3.66               & 3.54              & 0.66                          & .72               \\ \hline
+	Transition time (H-L) ($\mu s$)   	& 0.08               & 0.20              & 0.20                          & 0.01              \\ \hline
+	Transition time (L-H) ($\mu s$)   	& 0.56               & 3.14              & 0.21                          & 3.21              \\ \hline
+	Maximum output current (mA)       	& -                    & 51                & -                             & 16                \\ \hline
+
+	\end{tabular}
+	
+	\caption{Mediciones con y sin carga para ambas compuertas}
+	\label{table:1-mediciones}
+\end{table*}
 
 \end{document}

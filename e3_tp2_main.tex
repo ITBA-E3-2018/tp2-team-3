@@ -18,16 +18,10 @@
 \newgeometry{left =1.5cm, right=1.5cm, top=1.5cm, bottom=2cm}	%texto ocupa mas ancho de pagina
 
 
-\tableofcontents
-\newpage
-
 
 %hago backup del comando \input actual, y lo cambio para que cambie el path de buqueda de nuevos archivos
 %esto va a afectar a los includes de este archivo y a los del archivo del subfile, pero solo cuando compilo desde aca. Si compilo desde el subfile este cambio no sucede entonces sigue andando.
 
-\subfile{e3_tp2_intro.tex}
-
-\clearpage
 
 \let\oldinput=\input 	
 \def\input#1{\oldinput{Ej1/Informe/#1}}	
@@ -75,5 +69,5 @@
 \let\input=\oldinput
 
 
-\subfile{e3_tp2_anexo.tex}
+%\subfile{e3_tp2_anexo.tex}
 \end{document}

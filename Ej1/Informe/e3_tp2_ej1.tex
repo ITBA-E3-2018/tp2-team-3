@@ -1,5 +1,3 @@
-
-
 \documentclass[../../e3_tp2_main.tex]{subfiles}
 
 \begin{document}
@@ -52,32 +50,70 @@ Se utilizaron transistores BC547 y resistencias de metal-film, y los circuitos s
 
 \section{An\'alisis de resultados}
 
-Las mediciones se realizaron el circuito con ondas cuadradas de 5V de amplitud\todo{modelo del generador}, con el nivel bajo en 0V. Las tensiones necesarias para calcular el margen de ruido se midieron utilizando el modo XY del osciloscopio\todo{modelo del osciloscopio}, mientras que para los tiempos el modo \textit{single}. Todas las mediciones se realizaron en dos condiciones para cada compuerta: en vac\'io, y con un capacitor de 1nF como carga. Al cargar la compuerta, se pudo hacer adem\'as una medici\'on adicional: la corriente de salida m\'axima, que por ser la carga puramente capacitiva, se calcul\'o como $i_c = C \cdot \frac{dV_C}{dt}$, obteniendo esta derivada a trav\'es de las funciones matem\'aticas del osciloscopio. \par
+Las mediciones se realizaron el circuito con ondas cuadradas de 5V de amplitud\todo{modelo del generador}, con el nivel bajo en 0V. Las tensiones necesarias para calcular el margen de ruido se midieron utilizando el modo XY del osciloscopio\todo{modelo del osciloscopio}, mientras que para los tiempos el modo \textit{single}. Todas las mediciones se realizaron en dos condiciones para cada compuerta: en vac\'io, y con un capacitor de 1nF como carga. Al cargar la compuerta, se pudo hacer adem\'as una medici\'on adicional: la 
 
-Los resultados de las mediciones se encuentran en la tabla \ref{table:1-mediciones}.\par
+Los resultados de las mediciones se encuentran en las tablas \ref{table:1-mediciones-rtl} y \ref{table:1-mediciones-ttl}. Las magnitudes medidas fueron:
 
-\todo[inline]{analisis}
+\begin{itemize}
+	\item HLIV (\textit{high-level input voltage}): m\'axima tensi\'on de entrada con la cual la pendiente de $V_{IN}(V_{OUT})=-1$, es decir, la m\'inima con la que se interpreta un 1 en la entrada.
+	\item LLIV (\textit{low-level input voltage}): m\'inima tensi\'on de entrada con la cual la pendiente de $V_{IN}(V_{OUT})=-1$, es decir, la m\'axima con la que se interpreta un 0 en la entrada.
+	\item HLOV (\textit{high-level output voltage}): tensi\'on de salida cuando $V_{IN}=HLIV$, es decir, la m\'inima con la cual puede considerarse que hay un 1 en la salida.
+	\item LLIV (\textit{low-level ouput voltage}): tensi\'on de salida cuando $V_{IN}=LLIV$, es decir, la m\'inima con la cual puede considerarse que hay un 1 en la salida.
+	\item Noise margin: diferencia entre el \textit{high/low level input} y \textit{output} voltage, es decir rango de tensiones que pueden hallarse a la entrada pero no a la salida (pero que tienen comportamiento definido para la salida) para cada nivel l\'ogico. 
+	\item PD (\textit{propagation delay}): tiempo que transcurre entre que la tensi\'on de entrada est\'a al 50\% entre su valor bajo y alto, y que lo opuesto ocurre en la salida.
+	\item TT (\textit{transition time}): tiempo que tarda la salida en transicionar de un 10\% a un 90\% de la tensi\'on alta.
+	\item Max. out. curr (\textit{maximum output current}): corriente de salida m\'axima, que por ser la carga puramente capacitiva, se calcul\'o como $i_c = C \cdot \frac{dV_C}{dt}$, obteniendo esta derivada a trav\'es de las funciones matem\'aticas del osciloscopio. \par
+\end{itemize}
+
+Cabe destacar que el transition time medido en el caso de la compuerta TTL con carga, resultante en 10ns, no puede ser tomado como tal: debe considerarse que esto era respuesta a una se\~nal generada por un dispositivo que no asegura poder generar se\~nales con un rise time menor a 13ns, con lo cual este es el l\'imite inferior de lo que se puede medir en lo que a esta magnitud respecta.\par
 
 
-\begin{table*}[t]
-	\begin{tabular}{|c|c|c|c|c|}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|}
 	\hline
-                                  				& RTL en vac\'io	& RTL con $C_L=1nF$ & TTL en vac\'io & TTL con $C_L=1nF$ \\ \hline \hline
-	HLIV (V)                          			&                      &                   &                               &                   \\ \hline
-	LLIV (V)                          			&                      &                   &                               &                   \\ \hline
-	HLOV (V)                          			&                      &                   &                               &                   \\ \hline
-	LLOV (V)                          			&                      &                   &                               &                   \\ \hline
-	Noise margin                      		&                      &                   &                               &                   \\ \hline
-	Propagation delay (H-L) ($\mu s$)	& 0.05               & 0.07              & 0.07                          & 0.01              \\ \hline
-	Propagation delay (L-H) ($\mu s$) 	& 3.66               & 3.54              & 0.66                          & .72               \\ \hline
-	Transition time (H-L) ($\mu s$)   	& 0.08               & 0.20              & 0.20                          & 0.01              \\ \hline
-	Transition time (L-H) ($\mu s$)   	& 0.56               & 3.14              & 0.21                          & 3.21              \\ \hline
-	Maximum output current (mA)       	& -                    & 51                & -                             & 16                \\ \hline
+        RTL                          				& En vac\'io	& Con carga \\ \hline \hline
+	HLIV (V)                          			&                      &                   \\ \hline
+	LLIV (V)                          			&                      &                    \\ \hline
+	HLOV (V)                          			&                      &                                    \\ \hline
+	LLOV (V)                          			&                      &                               \\ \hline
+	Noise margin H (V)                     	&                      &                                \\ \hline
+	Noise margin L (V)				&			&				\\ \hline
+	PD (H-L) ($\mu s$)	& 0.05               & 0.07                        \\ \hline
+	PD (L-H) ($\mu s$) 	& 3.66               & 3.54             \\ \hline
+	TT (H-L) ($\mu s$)   	& 0.08               & 0.20                   \\ \hline
+	TT (L-H) ($\mu s$)   	& 0.56               & 3.14                   \\ \hline
+	Max. out. curr. (mA)       	& -                    & 51                     \\ \hline
 
 	\end{tabular}
 	
-	\caption{Mediciones con y sin carga para ambas compuertas}
-	\label{table:1-mediciones}
-\end{table*}
+	\caption{Mediciones para la compuerta RTL}
+	\label{table:1-mediciones-rtl}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+	\hline
+        TTL                          				& En vac\'io & Con carga \\ \hline \hline
+	HLIV (V)                          			&                      &                        \\ \hline
+	LLIV (V)                          			&                      &                       \\ \hline
+	HLOV (V)                          			&                      &                 \\ \hline
+	LLOV (V)                          			&                      &                         \\ \hline
+	Noise margin H (V)                     	&                      &                                \\ \hline
+	Noise margin L (V)				&			&				\\ \hline
+	PD (H-L) ($\mu s$)	& 0.05               & 0.07                  \\ \hline
+	PD (L-H) ($\mu s$) 	& 3.66               & 3.54                   \\ \hline
+	TT (H-L) ($\mu s$)   	& 0.08               & 0.20              \\ \hline
+	TT (L-H) ($\mu s$)   	& 0.56               & 3.14                    \\ \hline
+	Max. out. curr. (mA)       	& -                    & 51               \\ \hline
+
+	\end{tabular}
+	
+	\caption{Mediciones para la compuerta TTL}
+	\label{table:1-mediciones-ttl}
+\end{table}
+
+
 
 \end{document}

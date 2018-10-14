@@ -18,24 +18,15 @@ wire sTrigger;
 
     #3
     trigger=1;
-    #1
+    #2
     trigger=0;
     #5
     sEcho=1;
-    #700
+    #500
     sEcho=0;
     #10;
 
-    #3
-    trigger=1;
-    #1
-    trigger=0;
-    #5
-    sEcho=1;
-    #300
-    sEcho=0;
-    #10;
-
+ 
    
     $finish;
 

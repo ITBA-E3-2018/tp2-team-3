@@ -66,9 +66,9 @@ Para medir cuanto tiempo el pulso de echo estuvo en high, se utilizó un contado
 	\caption{Contador de tiempo}
 \end{figure}
 \par En cuanto al reset del contador se lo conecto al trigger del sensor, de esta manera, cada vez que se dispare una medición el contador vuelve a cero.
-\subsection{OK meas}
+\subsection{Meas ready}
 
-En cuanto a la salida de ok meas, vasto con negar la señal de echo. Debido a que mientras no haya medición, la señal de echo se mantiene en low y por ende ok meas se mantiene en high. Cuando echo está en high, quiere decir que se está midiendo, y ok meas se encuentra en low.
+En cuanto a la salida de meas ready, vasto con negar la señal de echo. Debido a que mientras no haya medición, la señal de echo se mantiene en low y por ende meas ready se mantiene en high. Cuando echo está en high, quiere decir que se está midiendo, y ok meas se encuentra en low.
 \subsection{Prototipo}
 Previo al diseño final del circuito, se decidió construir un prototipo del mismo en protoboard, para así probar el correcto funcionamiento de cada etapa y del conjunto. 
 \begin{figure}[H]	
@@ -89,6 +89,17 @@ Salida 8 bits que indican el tiempo medido, y 1 bit que indica que la medición 
 	\caption{Esquematico}
 \end{figure}
 
+\subsection{Simulación}
+Se simulo en Iverilog el circuito, y con gtkwave se visualizó su comportamiento en el tiempo.
+\par Los módulos, utilizados en la simulación son los mismos anteriormente descriptos, es decir hay un módulo encargado de generar un pulso y otro de contar el tiempo.
+\begin{figure}[H]	
+	\centering
+	\includegraphics[width=0.5\textwidth]{imagenes/gtksim.png}
+	\caption{Simulación}\label{fig:simg}
+\end{figure}
+
+La figura \ref{fig:simg} es la simulación temporal del circuito. meas es el resultado de la medición, sEcho es el pulso devuelto por el sensor, sTrigger es el pulso que el circuito le envía al sensor para comenzar la medición, trigger es el pulso que recibe el circuito para comenzar a medir, meas ready indica que la medición finalizo y clock.
+\par Tal como se observa en la imagen se dispara el trigger, posteriormente el circuito genera en sTrigger un pulso de ancho 50$\micro s$.Despues sEcho pasa high (comienza a medir el sensor) y meas redy pasa a low. El contador comienza a contar cuantos pulsos de clock la señal de echo estuvo en high. Cuando sEcho pasa low (la medición  finalizo) y meas ready pasa a high. Como el ancho del echo es de 500 $\micro s$, el contador llegó a 5.
 
 
 

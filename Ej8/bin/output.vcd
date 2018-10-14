@@ -1,0 +1,229 @@
+$date
+	Sun Oct 14 12:43:26 2018
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	10us
+$end
+$scope module testBench $end
+$var wire 1 ! clock $end
+$var wire 8 " meas [7:0] $end
+$var wire 1 # measReady $end
+$var wire 1 $ sTrigger $end
+$var wire 1 % triggerEn $end
+$var reg 1 & dummy $end
+$var reg 513 ' dumpfile_path [512:0] $end
+$var reg 1 ( sEcho $end
+$var reg 1 ) t $end
+$var reg 1 * trigger $end
+$scope module my_meas $end
+$var wire 1 + clk $end
+$var wire 1 ! clock $end
+$var wire 8 , meas [7:0] $end
+$var wire 1 # measReady $end
+$var wire 1 - sEcho $end
+$var wire 1 $ sTrigger $end
+$var wire 1 . trig $end
+$var wire 1 / trigger $end
+$var wire 1 % triggerEn $end
+$scope module my_counter $end
+$var wire 1 + clk $end
+$var wire 1 $ reset $end
+$var reg 8 0 out [7:0] $end
+$upscope $end
+$scope module pg $end
+$var wire 1 . trig $end
+$var reg 1 1 out $end
+$scope begin PLS_GEN $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module cl $end
+$var reg 1 2 clk $end
+$scope begin CLOCK_DRIVER $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+02
+01
+bx 0
+0/
+0.
+0-
+bx ,
+0+
+0*
+0)
+0(
+b110001001101001011011100010111101101111011101010111010001110000011101010111010000101110011101100110001101100100 '
+1&
+1%
+0$
+1#
+bx "
+0!
+$end
+#3
+b0 0
+b0 "
+b0 ,
+11
+1$
+1.
+1*
+1/
+#4
+0.
+0*
+0/
+#8
+01
+0$
+#9
+0#
+1(
+1-
+#50
+b1 0
+b1 "
+b1 ,
+1+
+12
+1!
+#100
+0+
+02
+0!
+#150
+b10 0
+b10 "
+b10 ,
+1+
+12
+1!
+#200
+0+
+02
+0!
+#250
+b11 0
+b11 "
+b11 ,
+1+
+12
+1!
+#300
+0+
+02
+0!
+#350
+b100 0
+b100 "
+b100 ,
+1+
+12
+1!
+#400
+0+
+02
+0!
+#450
+b101 0
+b101 "
+b101 ,
+1+
+12
+1!
+#500
+0+
+02
+0!
+#550
+b110 0
+b110 "
+b110 ,
+1+
+12
+1!
+#600
+0+
+02
+0!
+#650
+b111 0
+b111 "
+b111 ,
+1+
+12
+1!
+#700
+0+
+02
+0!
+#709
+1#
+0(
+0-
+#722
+b0 0
+b0 "
+b0 ,
+11
+1$
+1.
+1*
+1/
+#723
+0.
+0*
+0/
+#727
+01
+0$
+#728
+0#
+1(
+1-
+#750
+b1 0
+b1 "
+b1 ,
+1+
+12
+1!
+#800
+0+
+02
+0!
+#850
+b10 0
+b10 "
+b10 ,
+1+
+12
+1!
+#900
+0+
+02
+0!
+#950
+b11 0
+b11 "
+b11 ,
+1+
+12
+1!
+#1000
+0+
+02
+0!
+#1028
+1#
+0(
+0-
+#1038

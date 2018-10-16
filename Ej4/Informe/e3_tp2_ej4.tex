@@ -4,13 +4,13 @@
 
 \chapter{}
 
-En esta secci\'on, estudiaremos la variaci\'on de los par\'ametros caracter\'isticos de una compuerta l\'ogica al cargar su salida, y al introducir capacitores de desacople. La compuerta que utilizaremos es una 74HC02, es decir una \textit{nor} de tecnolog\'ia CMOS.\par
+En esta secci\'on, estudiaremos la variaci\'on de los par\'ametros caracter\'isticos de una compuerta l\'ogica al cargar su salida, y al introducir capacitores de desacople. A su vez, se observar\'a el comportamiento del circuito a frecuencias altas (100$kHz$), particularmente qu\'e sucede con la tensi\'on de alimentaci\'on. La compuerta que utilizaremos es una 74HC02, es decir una \textit{nor} de tecnolog\'ia CMOS.\par
 
 Para observar el comportamiento del circuito al conectarle una carga, se arm\'o el siguiente circuito:
 
 \begin{figure}[H]
 	\centering
-	\scalebox{0.8}{
+	\scalebox{0.7}{
 	\begin{circuitikz}
 	%\draw[help lines] (0,0) grid (7,8);
 	\draw			
@@ -73,19 +73,34 @@ Para observar el comportamiento del circuito al conectarle una carga, se arm\'o 
 	\caption{Esquema del circuito}
 \end{figure}
 
-Las compuertas \textit{nand} utilizadas provinieron del integrado 74LS00, es decir que son de tecnolog\'ia TTL. Si bien estas tecnolog\'ias no son compatibles entre s\'i en principio, los rangos de tensiones que representan ceros o unos l\'ogicos coinciden en esta configuraci\'on (como se discuti\'o en el ejercicio 2). 
+Las compuertas \textit{nand} utilizadas provinieron del integrado 74LS00, es decir que son de tecnolog\'ia TTL. Si bien estas tecnolog\'ias no son compatibles entre s\'i en principio, los rangos de tensiones que representan ceros o unos l\'ogicos coinciden en esta configuraci\'on (como se discuti\'o en el ejercicio 2). \par
+
+Los tiempos caracter\'isticos resultaron ser los siguientes:
 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|}
 	\hline
                   			& En vac\'io	& Con carga	\\ \hline \hline
-	Propagaci\'on H-L	&         		&                      \\ \hline
-	Propagaci\'on L-H 	&         		&                      \\ \hline
-	Rise time         		&         		&                      \\ \hline
-	Fall time         		&         		&                      \\ \hline
+	Propagaci\'on H-L	& 12   		& 10            	\\ \hline
+	Propagaci\'on L-H 	& 15    		& 12           	\\ \hline
+	Rise time         		& 85        		& 180                \\ \hline
+	Fall time         		& 93        		& 93               	\\ \hline
 	\end{tabular}
-	\caption{Tiempos medidos (en microsegundos)}
+	\caption{Tiempos medidos (en nanosegundos)}
+	\label{fig:2-circuito}
 \end{table}
+
+Se observa que al estar cargado el circuito, los tiempos de propagaci\'on se reducen (aunque muy levemente), mientras que el \textit{rise time} sube y el \textit{fall time} se mantiene igual. Esto puede deberse a que alguna componente capacitiva par\'asita de la carga no permite que la se\~nal var\'ie tan r\'apidamente. \par 
+
+A frecuencias bajas (de 1$Hz$), observando los LEDs se determin\'o que los niveles l\'ogicos a las salidas eran los correctos, puesto que conmutaban aproximadamente dos veces por segundo, con la salida de las \textit{nand} siendo la opuesta de la de las \textit{nor}, y midiendo la tensi\'on de salida de la compuerta \textit{nor} se verific\'o que la misma era la opuesta de la de la entrada.\par
+
+Sin embargo, cabe destacar que el LED conectado directamente a la salida del 74HC02 iluminaba menos que los dem\'as, y mucho menos que si el otro integrado no se conectaba. Esto indicar\'ia que se est\'a superando el \textit{fanout} del integrado. Dado que las compuertas del 74LS00 son de tecnolog\'ia TTL, el \textit{switching} se hace con la corriente de base. Como la impedancia de entrada de un transistor BJT es mucho menor que la de un CMOS, esta corriente ser\'a mucho mayor que la tensi\'on de \textit{gate} de este \'ultimo. Como las compuertas HC no est\'an dise\~nadas para ser compatibles con compuertas TTL, esto puede estar generando problemas al trabajar en estas condiciones.\par
+
+Al aumentar la frecuencia a 100$kHz$, se observ\'o que el 74HC02 levantaba temperatura, si bien no lleg\'o a quemar al tacto incluso despu\'es de pasado m\'as de un minuto. Midiendo la tensi\'on de alimentaci\'on, se determin\'o que la misma segu\'ia conservando su valor de 5V proporcionados por la fuente.\par
+
+Al agregar un capacitor entre $V_{CC}$ y tierra, se logr\'o que el \textit{ripple} de la fuente se reduzca: la tensi\'on pico a pico de la alimentaci\'on descendi\'o de 132mV a 80mV, es decir de un 2.64\% a un 1.6\% del valor de $V_{CC}$. Sin embargo, la temperatura del integrado no se vio afectada de manera apreciable.\par
+
+El capacitor de desacople utilizado fue de 100nF, de acuerdo a lo recomendado por la \textit{data sheet} del integrado de Texas Instruments\footnote{Fuente: \url{http://www.ti.com/lit/ds/symlink/sn74hc02.pdf} (consultado: 16/10/18)}. El mismo se coloc\'o lo m\'as cerca posible del \textit{pin} correspondiente a $V_{CC}$ del integrado, con el objetivo de contrarrestar los efectos inductivos que puedan tener los cables, de forma tal que si el integrado pide un pico de corriente el mismo sea otorgado por el capacitor sin inducir una tensi\'on en las bobinas par\'asitas.
 
 \end{document}

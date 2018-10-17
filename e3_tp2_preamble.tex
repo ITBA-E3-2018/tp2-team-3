@@ -13,9 +13,11 @@
 		  {Ej3/Informe/imagenes/}{Ej3/Informe/}
 		  {Ej4/Informe/imagenes/}{Ej4/Informe/}
 		  {Ej5/Informe/imagenes/}{Ej5/Informe/}
+		  {Ej6/Informe/imagenes/}{Ej6/Informe/}
+		  {Ej7/Informe/imagenes/}{Ej7/Informe/}
 		  {Ej8/Informe/imagenes/}{Ej8/Informe/}}	
 										
-
+\usepackage{multicol}
 \usepackage{lipsum}
 \usepackage{nomencl}					%Para introducir nomenclaturas/definciones
 \usepackage{makecell}					%Para emprolijar celdas de tablas
@@ -43,8 +45,15 @@
 \usepackage{listings}
 \usepackage{stfloats}
 \usepackage{longtable}
+\usepackage{titlesec}
+
+\titlespacing*{\section}
+  {0pt}{6\baselineskip}{1\baselineskip}
 
 \setlength{\marginparwidth}{2cm}		%dar lugar a las todo notes en modo twocolumn
+
+\widowpenalty10000
+\clubpenalty10000
 
 
 % Swap the definition of \abs* and \norm*, so that \abs
@@ -127,6 +136,15 @@
 \hyphenation{co-rres-pon-de}
 \hyphenation{ló-gi-cas}
 \hyphenation{co-rrec-tos}
+\hyphenation{pa-rá-me-tros}
+\hyphenation{man-te-ner-se}
+\hyphenation{mi-dien-do}
+\hyphenation{es-ta-ble-ci-mien-to}
+\hyphenation{ge-ne-ra}
+\hyphenation{vi-sua-li-zó}
+
+
+
 
 
 
@@ -134,7 +152,6 @@
 \AtBeginDocument{\renewcommand\contentsname{Índice}}
 \AtBeginDocument{\renewcommand\figurename{Figura}}
 \AtBeginDocument{\renewcommand\tablename{Tabla}}
-\AtBeginDocument{\renewcommand\chaptername{Ejercicio}}
 
 \definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
 \definecolor{mylilas}{RGB}{170,55,241}

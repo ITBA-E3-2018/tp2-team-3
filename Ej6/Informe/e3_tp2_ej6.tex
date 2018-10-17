@@ -3,10 +3,11 @@
 \documentclass[../../e3_tp2_main.tex]{subfiles}
 
 \begin{document}
-\chapter{Ejercicio 6}
+\section{Ejercicio 6}
+
 Se implementó un latch S R y un flil flop D a partir de compuertas lógicas discretas. Se midieron parámetros característicos y se compararon con equivalentes comerciales.
-\section{Flip flop d}
-\subsection{Funcionamiento}
+\subsection{Flip flop D}
+\subsubsection{Funcionamiento}
 El flip flop tipo d transfiere la entrada a la salida en cada ciclo de clock. Por ende se lo puede utilizar como unidad básica de memoria.
 \begin{figure}[H]	
 	\centering
@@ -27,16 +28,16 @@ $\downarrow$ &X  &$Q_{n-1}$ \\ \hline
 \end{center}
 \end{table}
 
-\subsection{Circuito lógico}
+\subsubsection{Circuito lógico}
 Una posible implementación del flip flop d es la siguiente:
 \begin{figure}[H]	
 	\centering
 	\includegraphics[width=0.5\textwidth]{imagenes/ffd_cd.png}
 	\caption{Circuito digital del flip flop d}
 \end{figure}
-\subsection{Implementación}
-Se implementó el circuito indicado en la sección anterior con compuertas lógicas NAND. Para ellos se utilizó el encapsulado 74HC00.
-\subsubsection{Medición}
+\subsubsection{Implementación y medici\'on}
+Se implementó el circuito indicado en la sección anterior con compuertas lógicas NAND. Para ellos se utilizó el encapsulado 74HC00.\par
+
 Del circuito previamente mencionado, se midió el tiempo de establecimiento, el rise time y el fall time. 
 
 \begin{table}[h]
@@ -95,9 +96,9 @@ $<400 n s$  & $<400 n s$ \\ \hline
 
 Como se puede observar los tiempos de propagación del flip flop comercial son menores al que se implementó, Esto se puede suponer a que el comercial hace un uso eficiente de los transistores.
 
-\section{Latch SR}
+\subsection{Latch SR}
 
-\subsection{Funcionamiento}
+\subsubsection{Funcionamiento}
 El latch SR, posee tres entradas. Una de clock, para poder sincronizar, otra de set (pone la salida a HIGH) y de reset (salida en LOW).
 \begin{figure}[H]	
 	\centering
@@ -121,7 +122,7 @@ $\uparrow$ & 1 &1 & Indeterminado \\ \hline
 \end{center}
 \end{table}
 
-\subsection{Circuito lógico}
+\subsubsection{Circuito lógico}
 Una posible implementación del latch SR es la siguiente:
 \begin{figure}[H]	
 	\centering
@@ -129,9 +130,9 @@ Una posible implementación del latch SR es la siguiente:
 	\caption{Circuito digital del flip flop d}
 \end{figure}
 
-\subsection{Implementación}
-Se implementó el circuito indicado en la sección anterior con compuertas lógicas NAND, las compuertas NOR tambien se implenetaron con NANDS. Para ellos se utilizó el encapsulado 74HC00.
-\subsubsection{Medición}
+\subsubsection{Implementación y medici\'on}
+Se implementó el circuito indicado en la sección anterior con compuertas lógicas NAND, las compuertas NOR tambien se implenetaron con NANDS. Para ellos se utilizó el encapsulado 74HC00. \par
+
 Del circuito previamente mencionado, se midió el tiempo de establecimiento, el rise time y el fall time. 
 
 \begin{table}[h]
@@ -188,7 +189,6 @@ $<400 n s$  & $<400 n s$ \\ \hline
 \caption{Datasheet, rise time y fall time.} 
 \end{center}
 \end{table}
-
 
 
 

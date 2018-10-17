@@ -3,7 +3,7 @@
 \documentclass[../../e3_tp2_main.tex]{subfiles}
 
 \begin{document}
-\chapter{Ejercicio 8}
+\section{Ejercicio 8}
 
 Se propuso el diseño de un circuito que permita medir distancias utilizando un sensor ultrasónico de distancia (hc-sr04).
 \par El circuito debe cumplir con los siguientes requerimientos: 
@@ -14,7 +14,7 @@ Se propuso el diseño de un circuito que permita medir distancias utilizando un 
 \item meas ready, pin de salida que indica que la medición ha finalizado. 
 \end{itemize}
 
-\section{Sensor HC-SR04}
+\subsection{Sensor HC-SR04}
 
 El sensor de distancia hc-sr04
 \footnote{Datasheet del sensor, Mouser.com. (2018). [online] Available at: https://www.mouser.com/ds/2/813/HCSR04-1022824.pdf [Accessed 13 Oct. 2018].}
@@ -34,7 +34,7 @@ El sensor de distancia hc-sr04
 	\caption{Diagrama temporal}
 \end{figure}
 
-\section{Circuito Implementado}
+\subsection{Circuito Implementado}
 
 Se modularizó el circuito de la siguiente manera:
 \begin{figure}[H]	
@@ -46,7 +46,7 @@ Los dos módulos principales, tal como se muestra en la imagen \ref{fig:dBloques
 \par El generador de pulso, cuando recibe un flanco positivo, genera un pulso mayor a 10 $\micro s$ para que el sensor comience a medir.
 \par El contador de tiempo, mide el ancho del pulso devuelto por echo, y lo devuelve en 8 bits, también se encarga de indicar que la medición finalizo.
 
-\subsection{Generador de pulso}
+\subsubsection{Generador de pulso}
 El generador de pulso se implementó con un LM555. EL circuito utilizado fue el de la figura \ref{fig:555c}, dicho circuito genera un pulso de ancho$= R_a C 1.1$ s, para generar el disparo se debe generar un pulso menor que el configurado.
 \par Como el sensor requiere un ancho de pulso mayor de 10$\micro s$, se eligieron los componentes para un pulso de 50$\micro s$, por ende el capacitor $C=10nf$ y $R_a=5k \Omega$
 
@@ -57,7 +57,7 @@ El generador de pulso se implementó con un LM555. EL circuito utilizado fue el 
 \end{figure}
 Para evitar que al generador de pulso, le ingrese una señal mayor a 50$\micro s$ se le coloco a la entrada (disparo) un RC con tiempo característico de 10$\micro s$. 
 
-\subsection{Contador de tiempo}
+\subsubsection{Contador de tiempo}
 Para medir cuanto tiempo el pulso de echo estuvo en high, se utilizó un contador de 8 bits y una señal cuadrada de 50 \% duty cycle como clock.
 \par El contador utilizado, cuenta flancos positivos de clock. Por ende para contar cuanto tiempo la señal de echo estuvo en high, se conectó la entrada de clock del contador, a la salida de una AND. Las entradas de la AND son la señal de echo y una señal cuadrada de 10KHz. De esta manera, cada vez que ocurre un flanco de clock y la señal echo esta en high el contador incrementa en una unidad. Debido a que la frecuencia de la señal cuadrada es de 10Khz, cada unidad en el contador representa 100 $\micro s$.
 \begin{figure}[H]	
@@ -66,10 +66,10 @@ Para medir cuanto tiempo el pulso de echo estuvo en high, se utilizó un contado
 	\caption{Contador de tiempo}
 \end{figure}
 \par En cuanto al reset del contador se lo conecto al trigger del sensor, de esta manera, cada vez que se dispare una medición el contador vuelve a cero.
-\subsection{Meas ready}
+\subsubsection{Meas ready}
 
 En cuanto a la salida de meas ready, vasto con negar la señal de echo. Debido a que mientras no haya medición, la señal de echo se mantiene en low y por ende meas ready se mantiene en high. Cuando echo está en high, quiere decir que se está midiendo, y ok meas se encuentra en low.
-\subsection{Prototipo}
+\subsubsection{Prototipo}
 Previo al diseño final del circuito, se decidió construir un prototipo del mismo en protoboard, para así probar el correcto funcionamiento de cada etapa y del conjunto. 
 \begin{figure}[H]	
 	\centering
@@ -77,7 +77,7 @@ Previo al diseño final del circuito, se decidió construir un prototipo del mis
 	\caption{Prototipo del circuito}
 \end{figure}
 Como el prototipo funciono correctamente, tal como se muestra en el siguiente link (https://youtu.be/xzRgiA1r85w). Se procedió al armado de la placa.
-\subsection{Circuito}
+\subsubsection{Circuito}
 
 El circuito final construido posee las siguientes características:
 Entrada de trigger, trigger enable y clock. El clock al que se lo debe conectar es de 10Khz (señal cuadrada, 5v de amplitud y 50 \% de duty cycle).
@@ -89,7 +89,7 @@ Salida 8 bits que indican el tiempo medido, y 1 bit que indica que la medición 
 	\caption{Esquematico}
 \end{figure}
 
-\subsection{Simulación}
+\subsubsection{Simulación}
 Se simulo en Iverilog el circuito, y con gtkwave se visualizó su comportamiento en el tiempo.
 \par Los módulos, utilizados en la simulación son los mismos anteriormente descriptos, es decir hay un módulo encargado de generar un pulso y otro de contar el tiempo.
 \begin{figure}[H]	

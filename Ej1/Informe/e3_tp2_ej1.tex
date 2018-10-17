@@ -1,7 +1,7 @@
 \documentclass[../../e3_tp2_main.tex]{subfiles}
 
 \begin{document}
-\chapter{}
+\section{Ejercicio 1}
 
 En esta secci\'on se implementaron compuertas \textit{not} a partir de transistores BJT (de sus siglas en ingl\'es, \textit{bipolar junction transistor}). Particularmente, se decidi\'o utilizar BJTs de tipo NPN, formando circuitos de dos familias distintas:
 
@@ -14,6 +14,7 @@ De estas definiciones surge que en TTL se requiere mayor cantidad de transistore
 
 \begin{figure}[H]
 	\centering
+		\scalebox{1}{
 		\begin{circuitikz}
 	 	\draw 
  			(3.5,1) node[npn] (npn) {}
@@ -22,12 +23,14 @@ De estas definiciones surge que en TTL se requiere mayor cantidad de transistore
  		 	(npn.C) to [R, l_=1K$\Omega$, -o] (3.5,3.5) node[above]{+5V}
  		 	(3.5,1.5) to [short, *-o] (4,1.5) node[right]{$V_{OUT}$} 	
  		;\end{circuitikz}
+ 		}
 	\caption{Compuerta \textit{not} RTL}
 	\label{fig:1-rtl}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
+		\scalebox{1}{
 		\begin{circuitikz}
 	 	\draw 
  			(3.5,1) node[npn] (npn) {}
@@ -41,6 +44,7 @@ De estas definiciones surge que en TTL se requiere mayor cantidad de transistore
 			(npn2.B) to [R, l_=4.7K$\Omega$, -o] (1.5, 3.5) node[above]{+5V}	 	
  		 	
  		;\end{circuitikz}
+ 		}
 	\caption{Compuerta \textit{not} TTL}
 	\label{fig:1-ttl}
 \end{figure}
@@ -48,9 +52,9 @@ De estas definiciones surge que en TTL se requiere mayor cantidad de transistore
 
 Se utilizaron transistores BC547 y resistencias de metal-film, y los circuitos se armaron en una \textit{printed circuit board}. \par
 
-\section{An\'alisis de resultados}
+\subsection{An\'alisis de resultados}
 
-Las mediciones se realizaron el circuito con ondas cuadradas de 5V de amplitud\todo{modelo del generador}, con el nivel bajo en 0V. Las tensiones necesarias para calcular el margen de ruido se midieron utilizando el modo XY del osciloscopio\todo{modelo del osciloscopio}, mientras que para los tiempos el modo \textit{single}. Todas las mediciones se realizaron en dos condiciones para cada compuerta: en vac\'io, y con un capacitor de 1nF como carga. Al cargar la compuerta, se pudo hacer adem\'as una medici\'on adicional: la 
+Las mediciones se realizaron el circuito con ondas cuadradas de 5V de amplitud, con el nivel bajo en 0V. Las tensiones necesarias para calcular el margen de ruido se midieron utilizando el modo XY del osciloscopio con permanencia infinita, mientras que para los tiempos el modo \textit{single}. Todas las mediciones se realizaron en dos condiciones para cada compuerta: en vac\'io, y con un capacitor de 1nF como carga.\par
 
 Los resultados de las mediciones se encuentran en las tablas \ref{table:1-mediciones-rtl} y \ref{table:1-mediciones-ttl}. Las magnitudes medidas fueron:
 
@@ -65,24 +69,22 @@ Los resultados de las mediciones se encuentran en las tablas \ref{table:1-medici
 	\item Max. out. curr (\textit{maximum output current}): corriente de salida m\'axima, que por ser la carga puramente capacitiva, se calcul\'o como $i_c = C \cdot \frac{dV_C}{dt}$, obteniendo esta derivada a trav\'es de las funciones matem\'aticas del osciloscopio. \par
 \end{itemize}
 
-Cabe destacar que el transition time medido en el caso de la compuerta TTL con carga, resultante en 10ns, no puede ser tomado como tal: debe considerarse que esto era respuesta a una se\~nal generada por un dispositivo que no asegura poder generar se\~nales con un rise time menor a 13ns, con lo cual este es el l\'imite inferior de lo que se puede medir en lo que a esta magnitud respecta.\par
-
 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|}
 	\hline
-        RTL                          	& En vac\'io	& Con carga \\ \hline \hline
+        \textbf{RTL}           	& En vac\'io	& Con carga \\ \hline \hline
 	HLIV (V)                    & 0.80              	& 0.8           \\ \hline
 	LLIV (V)                    	& 0.57               & 0.57         \\ \hline
 	HLOV (V)                  	& 4.80               & 4.80         \\ \hline
 	LLOV (V)                   	& 0.27               & 0.27                              \\ \hline
-	Noise margin H (V)     &                      &                                \\ \hline
-	Noise margin L (V)	&			&				\\ \hline
-	PD (H-L) (ns)		& 0.05               & 4380                        \\ \hline
-	PD (L-H) (ns) 		& 3.66               & 140             \\ \hline
-	TT (H-L) (ns)   		& 0.08               & 224                   \\ \hline
-	TT (L-H) (ns)   		& 0.56               & 3860                   \\ \hline
+	Noise margin H (V)     & 4.0             	& 4.0                              \\ \hline
+	Noise margin L (V)	& 0.3			& 0.3		\\ \hline
+	PD (H-L) (ns)		& 3855              & 4380                        \\ \hline
+	PD (L-H) (ns) 		& 65                 & 140             \\ \hline
+	TT (H-L) (ns)   		& 134               & 224                   \\ \hline
+	TT (L-H) (ns)   		& 520                & 3860                   \\ \hline
 	Max. out. curr. (mA)   & -                    & 51                     \\ \hline
 
 	\end{tabular}
@@ -95,18 +97,18 @@ Cabe destacar que el transition time medido en el caso de la compuerta TTL con c
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
 	\hline
-        TTL                          	& En vac\'io	& Con carga \\ \hline \hline
+        \textbf{TTL}          	& En vac\'io	& Con carga \\ \hline \hline
 	HLIV (V)                   	& 0.63             	& 0.63                       \\ \hline
 	LLIV (V)                    	& 0.55             	& 0.55                      \\ \hline
 	HLOV (V)                  	& 4.85             	& 4.85                \\ \hline
 	LLOV (V)                   	& 0.21             	& 0.21                        \\ \hline
-	Noise margin H (V)    	&                      &                                \\ \hline
-	Noise margin L (V)	&			&				\\ \hline
-	PD (H-L) ($\mu s$)	& 804               	& 0.07                  \\ \hline
-	PD (L-H) ($\mu s$) 	& 10               	& 3.54                   \\ \hline
-	TT (H-L) ($\mu s$)   	& <13               & 0.20              \\ \hline
-	TT (L-H) ($\mu s$)   	& 115               	& 3.14                    \\ \hline
-	Max. out. curr. (mA)   & -                  	& 51               \\ \hline
+	Noise margin H (V)    	& 4.22              	& 4.22                                \\ \hline
+	Noise margin L (V)	& 0.34		& 0.34				\\ \hline
+	PD (H-L) (ns)		& 804               	& 1445                  \\ \hline
+	PD (L-H) (ns) 		& 10               	& 15                   \\ \hline
+	TT (H-L) (ns)   		& <13               & 70              \\ \hline
+	TT (L-H) (ns)   		& 115               	& 3120                    \\ \hline
+	Max. out. curr. (mA)   & -                  	& 16               \\ \hline
 
 	\end{tabular}
 	
@@ -114,6 +116,12 @@ Cabe destacar que el transition time medido en el caso de la compuerta TTL con c
 	\label{table:1-mediciones-ttl}
 \end{table}
 
+En primer lugar, debe tenerse en cuenta que las mediciones de los tiempos de transici\'on est\'an limitados por el \textit{rise time} m\'inimo del generador para ondas cuadradas, que es de 13ns\footnote{Informaci\'on obtenida de la \href{https://literature.cdn.keysight.com/litweb/pdf/5988-8544EN.pdf?id=187648}{\underline{hoja de datos}} del generador Agilent 33220A (consultado: 16/10/18).}, con lo cual para algunas mediciones s\'olo podemos afirmar que el valor obtenido es menor a este \'ultimo. \par
 
+Se puede apreciar que, para ambos circuitos, la carga no afecta los valores de tensiones de entrada ni de salida que se consideran como 1 o 0, pero causa que se extiendan todos los tiempos, tanto de propagaci\'on como de transici\'on. Esto es consistente con el hecho de que la carga capacitiva limita la variaci\'on de tensi\'on para una misma corriente.\par
+
+Se observa adem\'as que pr\'acticamente todos los par\'ametros medidos indican una mejor \textit{performance} de la compuerta TTL respuecto de la RTL. La principal ventaja de este \'ultimo tipo de tecnolog\'ia era el menor requerimiento en cantidad de transistores, lo cual era significante cuando estos componentes eran considerablemente m\'as caros que el resto del circuito. Actualmente, puesto que ya no es necesario el uso de transistores discretos sino que puede recurrirse a circuitos integrados y su precio ha disminuido, las compuertas RTL est\'an pr\'acticamente obsoletas. \par 
+
+El \'unica medici\'on realizada que favorece a la compuerta RTL es la de m\'axima corriente de salida: una mayor corriente m\'axima indica un mayor \textit{fanout}. Esta es una de las principales limitaciones de las compuertas TTL.
 
 \end{document}

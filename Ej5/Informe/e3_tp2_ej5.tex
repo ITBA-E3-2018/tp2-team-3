@@ -3,12 +3,12 @@
 \documentclass[../../e3_tp2_main.tex]{subfiles}
 
 \begin{document}
-\chapter{}
+\section{Ejercicio 5}
 
 En esta secci\'on, el objetivo es estudiar el comportamiento de una compuerta \textit{or} CMOS, de una \textit{and} TTL, y de la interacci\'on entre ambas. En particular haremos \'enfasis en qu\'e ocurre cuando una de las entradas est\'a flotante.\par
 
 
-\section{Compuerta \textit{and} TTL}
+\subsection{Compuerta \textit{and} TTL}
 
 Se utiliz\'o una de las 4 compuertas \textit{and} presentes en el integrado 74LS08, aliment\'andolo con $V_{CC} = 5V$. Para que esta alimentaci\'on fuese m\'as estable que la que proporcionan las fuentes del laboratorio de la universidad, se incluy\'o un capacitor de desacople de $100nF$, conectado entre $V_{CC}$ y tierra, y posicionado lo m\'as cercano al integrado posible. Otra consideraci\'on que se tuvo para reducir el ruido fue conectar las entradas de las \textit{gates} no utilizadas a $V_{CC}$ a trav\'es de una resistencia de $1k\Omega$, a fin de evitar que la salida de las mismas oscile.
 \footnote{Esta pr\'actica se recomienda en la nota de aplicaci\'on \href{https://www.fairchildsemi.com/application-notes/AN/AN-363.pdf}{\underline{\textit{Designing with TTL}} de \textit{Fairchild Semiconductors}} (consultado: 05/10/18).}\par
@@ -29,7 +29,7 @@ La compuerta de inter\'es se conect\'o con una entrada al nivel alto, es decir a
 
 De acuerdo a las propiedades del \'algebra de Boole, $x \cdot 1 = x$, y por lo tanto la salida deber\'ia estar en el mismo nivel l\'ogico que la entrada (lo cual se verific\'o experimentalmente). Se observ\'o que al dejar la entrada flotante, la salida se fijaba en el valor alto, midi\'endose a la salida aproximadamente $4.4V$. Realizando un DC \textit{sweep}, se determin\'o que esto implica que la tensi\'on flotante fue consistentemente mayor a $1.3V$, puesto que para tensiones menores la salida ser\'ia 0. 
 
-\section{Compuerta \textit{or} CMOS}
+\subsection{Compuerta \textit{or} CMOS}
 
 El integrado utilizado fue el 74HC32. Al igual que para el LS, se aliment\'o con $V_{CC}=5V$, utilizando un capacitor de desacople de $100nF$. Las entradas de las compuertas no utilizadas, en cambio, se conectaron a tierra.\par
 
@@ -60,7 +60,7 @@ Esta se\~nal cuadrada se debe a que la alta impedancia de la compuerta provoca q
 En cuanto al DC \textit{sweep}, en este caso indic\'o que la tensi\'on de entrada estaba oscilando entre tensiones menores y mayores a $2.2V$, puesto que a partir de la misma la salida resultaba ser 1 y viceversa.
 
 
-\section{Compuerta CMOS cargando a la compuerta TTL}
+\subsection{Compuerta CMOS cargando a la compuerta TTL}
 
 Habiendo estudiado el comportamiento de cada compuerta por separado, se procedi\'o a observar la interacci\'on entre ambas, conectando la salida del \textit{and} a la entrada del \textit{or}.
 
@@ -93,7 +93,7 @@ El DC \textit{sweep} de esta configuraci\'on est\'a tambi\'en en l\'inea con lo 
 
 
 
-\section{Conclusiones}
+\subsection{Conclusiones}
 
 De acuerdo a los resultados obtenidos, las compuertas CMOS son m\'as susceptibles al ruido que las TTL si se las deja flotantes. De no fijar la entrada de una CMOS, es probable que se induzca ruido proveniente de la linea. Si bien esto no se observ\'o en la TTL, es una buena pr\'actica fijar entradas no utilizadas a un valor l\'ogico determinado, de acuerdo a la bibliograf\'ia consultada.
 

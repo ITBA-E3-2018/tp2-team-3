@@ -86,11 +86,23 @@ El circuito final construido posee las siguientes características:
 	\item Entrada de \textit{trigger}, \textit{trigger enable} y \textit{clock}. El \textit{clock} al que se lo debe conectar es de 10$kHz$ (señal cuadrada, 5V de amplitud y 50\% de \textit{duty cycle}).
 	\item Salida 8 bits que indican el tiempo medido, y 1 bit que indica que la medición finaliz\'o.
 \end{itemize}
-\todo{sacar foto a la placa terminada y ponerla aca}.
+
 \begin{figure}[H]	
 	\centering
 	\fbox{\includegraphics[width=0.45\textwidth]{imagenes/esquematico.png}}
 	\caption{Esquem\'atico}
+\end{figure}
+
+\begin{figure}[H]	
+	\centering
+	\fbox{\includegraphics[width=0.45\textwidth]{imagenes/placa1.jpg}}
+	\caption{PCB}
+\end{figure}
+
+\begin{figure}[H]	
+	\centering
+	\fbox{\includegraphics[width=0.45\textwidth]{imagenes/placa2.jpg}}
+	\caption{PCB con sensor y led para indicar la salida}
 \end{figure}
 
 \subsubsection{Simulación}
@@ -100,7 +112,7 @@ Se simul\'o en Iverilog el circuito, y con GTKWave se visualizó su comportamien
 La figura \ref{fig:simg} es la simulación temporal del circuito. "meas" es el resultado de la medición, "sEcho" es el pulso devuelto por el sensor, "sTrigger" es el pulso que el circuito le envía al sensor para comenzar la medición, "trigger" es el pulso que recibe el circuito para comenzar a medir, y "meas ready" indica que la medición finaliz\'o.
 \par Tal como se observa en la imagen, primero se dispara el \textit{trigger}, posteriormente el circuito genera en sTrigger un pulso de ancho 50$\micro s$. Despu\'es sEcho pasa a \textit{high} (comienza a medir el sensor) y \textit{meas ready} pasa a \textit{low}. El contador comienza a contar cu\'antos pulsos de \textit{clock} la señal de echo estuvo en \textit{high}. Cuando sEcho pasa a \textit{low} (la medición finaliz\'o) y \textit{meas ready} pasa a \textit{high}. Como el ancho del echo es de 500$\micro s$, el contador llegó a 5.
 
-\begin{figure*}[b]	
+\begin{figure*}[t]	
 	\centering
 	\fbox{\includegraphics[width=0.9\textwidth]{imagenes/gtksim.png}}
 	\caption{Simulación}\label{fig:simg}

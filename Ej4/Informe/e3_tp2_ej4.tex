@@ -6,7 +6,7 @@
 
 En esta secci\'on, estudiaremos la variaci\'on de los par\'ametros caracter\'isticos de una compuerta l\'ogica al cargar su salida, y al introducir capacitores de desacople. A su vez, se observar\'a el comportamiento del circuito a frecuencias altas (100$kHz$), particularmente qu\'e sucede con la tensi\'on de alimentaci\'on. La compuerta que utilizaremos es una 74HC02, es decir una \textit{nor} de tecnolog\'ia CMOS.\par
 
-Para observar el comportamiento del circuito al conectarle una carga, se arm\'o el siguiente circuito:
+Para observar el comportamiento del circuito al conectarle una carga, se arm\'o el circuito que se encuentra ilustrado en la figura \ref{fig:4-circuito}.
 
 \begin{figure}[H]
 	\centering
@@ -71,9 +71,10 @@ Para observar el comportamiento del circuito al conectarle una carga, se arm\'o 
 	;\end{circuitikz}
 	}
 	\caption{Esquema del circuito}
+	\label{fig:4-circuito}
 \end{figure}
 
-Las compuertas \textit{nand} utilizadas provinieron del integrado 74LS00, es decir que son de tecnolog\'ia TTL. Si bien estas tecnolog\'ias no son compatibles entre s\'i en principio, los rangos de tensiones que representan ceros o unos l\'ogicos coinciden en esta configuraci\'on (como se discuti\'o en el ejercicio 2). \par
+Las compuertas \textit{nand} utilizadas provinieron del integrado 74LS00, es decir que son de tecnolog\'ia TTL. Si bien estas compuertas no son compatibles con las CMOS en principio, los rangos de tensiones que representan ceros o unos l\'ogicos coinciden en esta configuraci\'on (como se discuti\'o en el ejercicio 2). \par
 
 Los tiempos caracter\'isticos resultaron ser los siguientes:
 

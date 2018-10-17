@@ -5,13 +5,12 @@
 \begin{document}
 \section{Ejercicio 5}
 
-En esta secci\'on, el objetivo es estudiar el comportamiento de una compuerta \textit{or} CMOS, de una \textit{and} TTL, y de la interacci\'on entre ambas. En particular haremos \'enfasis en qu\'e ocurre cuando una de las entradas est\'a flotante.\par
+En esta secci\'on, el objetivo es estudiar el comportamiento de una compuerta \textit{or} CMOS y de una \textit{and} TTL, as\'i como la interacci\'on entre ambas. En particular haremos \'enfasis en qu\'e ocurre cuando una de las entradas est\'a flotante.\par
 
 
 \subsection{Compuerta \textit{and} TTL}
 
-Se utiliz\'o una de las 4 compuertas \textit{and} presentes en el integrado 74LS08, aliment\'andolo con $V_{CC} = 5V$. Para que esta alimentaci\'on fuese m\'as estable que la que proporcionan las fuentes del laboratorio de la universidad, se incluy\'o un capacitor de desacople de $100nF$, conectado entre $V_{CC}$ y tierra, y posicionado lo m\'as cercano al integrado posible. Otra consideraci\'on que se tuvo para reducir el ruido fue conectar las entradas de las \textit{gates} no utilizadas a $V_{CC}$ a trav\'es de una resistencia de $1k\Omega$, a fin de evitar que la salida de las mismas oscile.
-\footnote{Esta pr\'actica se recomienda en la nota de aplicaci\'on \href{https://www.fairchildsemi.com/application-notes/AN/AN-363.pdf}{\underline{\textit{Designing with TTL}} de \textit{Fairchild Semiconductors}} (consultado: 05/10/18).}\par
+Se utiliz\'o una de las 4 compuertas \textit{and} presentes en el integrado 74LS08, aliment\'andolo con $V_{CC} = 5V$. Para que esta alimentaci\'on fuese m\'as estable que la que proporcionan las fuentes del laboratorio de la universidad, se incluy\'o un capacitor de desacople de 100nF, conectado entre $V_{CC}$ y tierra, y posicionado lo m\'as cercano al integrado posible. Otra consideraci\'on que se tuvo para reducir el ruido fue conectar las entradas de las \textit{gates} no utilizadas a $V_{CC}$ a trav\'es de una resistencia de $1k\Omega$, a fin de evitar que la salida de las mismas oscile\footnote{Esta pr\'actica se recomienda en la nota de aplicaci\'on \href{https://www.fairchildsemi.com/application-notes/AN/AN-363.pdf}{\underline{\textit{Designing with TTL}} de \textit{Fairchild Semiconductors}} (consultado: 05/10/18).}.\par
 
 La compuerta de inter\'es se conect\'o con una entrada al nivel alto, es decir a $V_{CC}$, tambi\'en pasando por una resistencia de $1k\Omega$.
 
@@ -20,7 +19,8 @@ La compuerta de inter\'es se conect\'o con una entrada al nivel alto, es decir a
 	\begin{circuitikz}
 		\draw
 		(0,0) node[and port] (and){}
-		(and.in 1) -| (-1.5,1) node[ocirc, label=above:$V_{CC}$]{}
+		(and.in 1) -| (-1.5,0.5) 
+		to [R=1k$\Omega$] (-1.5, 2.3) node[ocirc, label=above:$V_{CC}$]{}
 		(and.in 2) -| (-1.5,-0.27) node[ocirc, label=left:$V_{in}$]{}
 		(and.out) -| (0.5,0)node[ocirc, label=right:$V_{out}$]{}	
 	;\end{circuitikz}
@@ -37,13 +37,14 @@ En este caso, se conect\'o una entrada a tierra y la otra se dej\'o flotante. An
 
 \begin{figure}[H]
 	\centering
+	\scalebox{1.2}{
 	\begin{circuitikz}
 		\draw
 		(0,0) node[or port] (or){}
 		(or.in 1) -| (-2,0.3) node[ocirc, label=left:$V_{in}$]{}
 		(or.in 2) -| (-2,-0.27) node[ground]{}
 		(or.out) -| (0.5,0)node[ocirc, label=right:$V_{out}$]{}	
-	;\end{circuitikz}
+	;\end{circuitikz}}
 	\caption{Conexi\'on de la compuerta CMOS}
 \end{figure}
 
@@ -51,13 +52,13 @@ Cuando la entrada no se fijaba en ning\'un valor, lo observado era lo siguiente:
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.3]{../mediciones/e3_tp2_5_cmos1.png}
+	\fbox{\includegraphics[scale=0.3]{../mediciones/e3_tp2_5_cmos1.png}}
 	\caption{Salida del \textit{or} CMOS con una entrada flotante}
 \end{figure}
 
 Esta se\~nal cuadrada se debe a que la alta impedancia de la compuerta provoca que sea muy susceptible al ruido, y por lo tanto oscila con los $50Hz$ de la l\'inea. Cabe aclarar que esta oscilaci\'on no se observaba siempre: moviendo los cables y tocando las conexiones se pod\'ian obtener tanto ceros como unos l\'ogicos. \par
 
-En cuanto al DC \textit{sweep}, en este caso indic\'o que la tensi\'on de entrada estaba oscilando entre tensiones menores y mayores a $2.2V$, puesto que a partir de la misma la salida resultaba ser 1 y viceversa.
+En cuanto al DC \textit{sweep}, en este caso indic\'o que la tensi\'on de entrada estaba oscilando entre tensiones menores y mayores a 2.2V, puesto que a partir de la misma la salida resultaba ser 1 y viceversa.
 
 
 \subsection{Compuerta CMOS cargando a la compuerta TTL}
@@ -71,7 +72,7 @@ Habiendo estudiado el comportamiento de cada compuerta por separado, se procedi\
 		(0,0) node[and port] (and){}
 		(2,-0.27) node[or port] (or){}		
 		
-		(and.in 1) -| (-1.5,1) node[ocirc, label=above:$V_{CC}$]{}
+		(and.in 1) -| (-1.5,0.5) to [R=1k$\Omega$] (-1.5, 2.3) node[ocirc, label=above:$V_{CC}$]{}
 		(and.in 2) -| (-1.5,-0.27) node[ocirc, label=left:$V_{in}$]{}
 		
 		(and.out) to [short, -*] (or.in 1)
@@ -87,7 +88,7 @@ El DC \textit{sweep} de esta configuraci\'on est\'a tambi\'en en l\'inea con lo 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.3]{../mediciones/e3_tp2_5_1.png}
+	\fbox{\includegraphics[scale=0.3]{../mediciones/e3_tp2_5_1.png}}
 	\caption{DC \textit{sweep} del circuito TTL-CMOS}
 \end{figure}
 

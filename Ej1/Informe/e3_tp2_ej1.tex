@@ -62,10 +62,10 @@ Los resultados de las mediciones se encuentran en las tablas \ref{table:1-medici
 	\item HLIV (\textit{high-level input voltage}): m\'axima tensi\'on de entrada con la cual la pendiente de $V_{IN}(V_{OUT})=-1$, es decir, la m\'inima con la que se interpreta un 1 en la entrada.
 	\item LLIV (\textit{low-level input voltage}): m\'inima tensi\'on de entrada con la cual la pendiente de $V_{IN}(V_{OUT})=-1$, es decir, la m\'axima con la que se interpreta un 0 en la entrada.
 	\item HLOV (\textit{high-level output voltage}): tensi\'on de salida cuando $V_{IN}=HLIV$, es decir, la m\'inima con la cual puede considerarse que hay un 1 en la salida.
-	\item LLIV (\textit{low-level ouput voltage}): tensi\'on de salida cuando $V_{IN}=LLIV$, es decir, la m\'inima con la cual puede considerarse que hay un 1 en la salida.
+	\item LLIV (\textit{low-level ouput voltage}): tensi\'on de salida cuando $V_{IN}=LLIV$, es decir, la m\'inima con la cual puede considerarse que hay un 0 en la salida.
 	\item Noise margin: diferencia entre el \textit{high/low level input} y \textit{output} voltage, es decir rango de tensiones que pueden hallarse a la entrada pero no a la salida (pero que tienen comportamiento definido para la salida) para cada nivel l\'ogico. 
 	\item PD (\textit{propagation delay}): tiempo que transcurre entre que la tensi\'on de entrada est\'a al 50\% entre su valor bajo y alto, y que lo opuesto ocurre en la salida.
-	\item TT (\textit{transition time}): tiempo que tarda la salida en transicionar de un 10\% a un 90\% de la tensi\'on alta.
+	\item TT (\textit{transition time}): tiempo que tarda la salida en transicionar de un 10\% a un 90\% de la tensi\'on alta o viceversa.
 	\item Max. out. curr (\textit{maximum output current}): corriente de salida m\'axima, que por ser la carga puramente capacitiva, se calcul\'o como $i_c = C \cdot \frac{dV_C}{dt}$, obteniendo esta derivada a trav\'es de las funciones matem\'aticas del osciloscopio. \par
 \end{itemize}
 
@@ -75,7 +75,7 @@ Los resultados de las mediciones se encuentran en las tablas \ref{table:1-medici
 	\begin{tabular}{|c|c|c|}
 	\hline
         \textbf{RTL}           	& En vac\'io	& Con carga \\ \hline \hline
-	HLIV (V)                    & 0.80              	& 0.8           \\ \hline
+	HLIV (V)                    & 0.80              	& 0.80           \\ \hline
 	LLIV (V)                    	& 0.57               & 0.57         \\ \hline
 	HLOV (V)                  	& 4.80               & 4.80         \\ \hline
 	LLOV (V)                   	& 0.27               & 0.27                              \\ \hline
